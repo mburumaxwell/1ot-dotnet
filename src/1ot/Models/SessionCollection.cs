@@ -6,7 +6,7 @@ namespace Mobi1ot.Models
     /// <summary>
     /// Represents a collection of <see cref="Session"/> objects
     /// </summary>
-    public class SessionCollection : AccountRecordsBase
+    public class SessionCollection : CollectionBase
     {
         /// <summary>
         /// The starting time for the sessions

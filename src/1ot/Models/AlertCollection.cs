@@ -6,7 +6,7 @@ namespace Mobi1ot.Models
     /// <summary>
     /// Represents a collection of <see cref="Alert"/> objects
     /// </summary>
-    public class AlertCollection : AccountRecordsBase
+    public class AlertCollection : CollectionBase
     {
         /// <summary>
         /// The <see cref="Alert"/> objects

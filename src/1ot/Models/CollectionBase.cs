@@ -5,7 +5,7 @@ namespace Mobi1ot.Models
     /// <summary>
     /// An abstraction for when querying potentially large amounts of data
     /// </summary>
-    public abstract class AccountRecordsBase
+    public abstract class CollectionBase
     {
         /// <summary>
         /// The number of records found
