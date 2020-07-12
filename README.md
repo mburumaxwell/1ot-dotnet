@@ -47,6 +47,18 @@ I will update the  library once the API is updated to behave as documented.
 
 The product and company name is 1ot. However, in C# (generally all programming languages), names for types, methods, variables,  and properties can only start with a letter or underscore. .NET further recommends that names of types, methods and properties start with a capital letter. This is why I chose to name the types in reverse domain, i.e. Mobi1ot is gotten from iot.mobi reversed.
 
+### Installation
+
+To install using Package Manager Console use:
+> Install-Package 1ot  
+> Install-Package 1ot.Extensions.DependencyInjection
+
+To install using dotnet cli use:
+> dotnet add 1ot  
+> dotnet add 1ot.Extensions.DependencyInjection
+
+Alternatively, you can use the NuGet package manager in Visual Studio by searching for `1ot` or `1ot.Extensions.DependencyInjection` and then click install.
+
 ### Usage
 
 ```csharp
