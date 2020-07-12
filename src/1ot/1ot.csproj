@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>
+      .NET client library and examples for using 1ot's API's to managed IoT SIM cards and data plans.
+      See https://1ot.mobi for more about 1ot
+    </Description>
+    <RootNamespace>Mobi1ot</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>

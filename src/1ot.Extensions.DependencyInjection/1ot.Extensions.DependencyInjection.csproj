@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>
+      Integrate Mobi1ot Client with HttpClientFactory and Microsoft.Extensions.DependencyInjection
+    </Description>
+    <RootNamespace>Mobi1ot.Extensions.DependencyInjection</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.5" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\1ot\1ot.csproj" />
+  </ItemGroup>
+
+</Project>

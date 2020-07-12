@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FD7040B8-9A6D-4D6A-A4B4-DC557BC5C138}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1ot", "src\1ot\1ot.csproj", "{2FC6D123-3A3D-4890-B6D3-27E18209D660}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1ot.Extensions.DependencyInjection", "src\1ot.Extensions.DependencyInjection\1ot.Extensions.DependencyInjection.csproj", "{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8E22A956-96DA-43F6-8001-835E5237B4DB}"
+	ProjectSection(SolutionItems) = preProject
+		test\Directory.Build.props = test\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{99941D6B-813F-4E25-8B1D-B13BEB789B62}"
+	ProjectSection(SolutionItems) = preProject
+		examples\Directory.Build.props = examples\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77A58123-7173-4C8F-AC60-18016CB9622C}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobi1ot.Extensions.DependencyInjection.Tests", "test\Mobi1ot.Extensions.DependencyInjection.Tests\Mobi1ot.Extensions.DependencyInjection.Tests.csproj", "{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobi1ot.Tests", "test\Mobi1ot.Tests\Mobi1ot.Tests.csproj", "{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSimple", "examples\ExampleSimple\ExampleSimple.csproj", "{3490B802-37FB-447C-BFC2-FEC704AC6C76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleDependencyInjection", "examples\ExampleDependencyInjection\ExampleDependencyInjection.csproj", "{5B64421D-A574-4AE0-982E-674BD9754EF9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FC6D123-3A3D-4890-B6D3-27E18209D660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FC6D123-3A3D-4890-B6D3-27E18209D660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FC6D123-3A3D-4890-B6D3-27E18209D660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FC6D123-3A3D-4890-B6D3-27E18209D660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3490B802-37FB-447C-BFC2-FEC704AC6C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3490B802-37FB-447C-BFC2-FEC704AC6C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3490B802-37FB-447C-BFC2-FEC704AC6C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3490B802-37FB-447C-BFC2-FEC704AC6C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B64421D-A574-4AE0-982E-674BD9754EF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B64421D-A574-4AE0-982E-674BD9754EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B64421D-A574-4AE0-982E-674BD9754EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B64421D-A574-4AE0-982E-674BD9754EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2FC6D123-3A3D-4890-B6D3-27E18209D660} = {FD7040B8-9A6D-4D6A-A4B4-DC557BC5C138}
+		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013} = {FD7040B8-9A6D-4D6A-A4B4-DC557BC5C138}
+		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD} = {8E22A956-96DA-43F6-8001-835E5237B4DB}
+		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C} = {8E22A956-96DA-43F6-8001-835E5237B4DB}
+		{3490B802-37FB-447C-BFC2-FEC704AC6C76} = {99941D6B-813F-4E25-8B1D-B13BEB789B62}
+		{5B64421D-A574-4AE0-982E-674BD9754EF9} = {99941D6B-813F-4E25-8B1D-B13BEB789B62}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C05729DD-280D-4B4A-A554-B4A924DD7D87}
+	EndGlobalSection
+EndGlobal

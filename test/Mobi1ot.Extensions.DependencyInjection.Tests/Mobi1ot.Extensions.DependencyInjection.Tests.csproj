@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\1ot.Extensions.DependencyInjection\1ot.Extensions.DependencyInjection.csproj" />
+  </ItemGroup>
+
+</Project>
