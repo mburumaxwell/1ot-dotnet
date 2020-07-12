@@ -1,30 +1,69 @@
-# ThingsMobile
+# 1ot
 
 ## Introduction
 
-ThingsMobile makes it easy to maintain SIM cards and their data plans/usage all over the world. More about ThingsMobile on the [website](https://thingsmobile.com).
+1ot makes it easy to maintain SIM cards and their data plans/usage all over the world. More about 1ot on the [website](https://1ot.mobi).
 
-The ThingsMobile dotnet NuGet package makes it easier to use the ThingsMobile API from your dotnet projects (netstandard2.0+) projects without having to build your own API calls. You can get your free API token at [https://www.thingsmobile.com/portal?step=api](https://www.thingsmobile.com/portal?step=api).
+The 1ot dotnet NuGet package makes it easier to use the 1ot API from your dotnet projects (netstandard2.0+) projects without having to build your own API calls. You can get your credentials (username and password from the API app in the 1ot terminal) token at [https://terminal.1ot.mobi/terminal-api](https://terminal.1ot.mobi/terminal-api).
 
-The documentation that this Client is built on is available for download on the ThingsMobile portal [https://www.thingsmobile.com/portal?action=downloadApiDocument](https://www.thingsmobile.com/portal?action=downloadApiDocument).
+The documentation that this Client is built on is available on the 1ot terminal [https://terminal.1ot.mobi/terminal-api-doc](https://terminal.1ot.mobi/terminal-api-doc).
+
+### Notes
+
+>You cannot access the api documentation without logging into the terminal which means you need to buy some SIM cards or be invited by someone who has bought some SIM cards.
+
+To use the API you must first enable the API app in the App Store. Enabling the API App attracts an additional cost of 0.04 EUR/active SIM per month. All active SIMs are counted even if they are not accessed via the API.
+
+To enable the API app:
+
+1. Login to your terminal [https://terminal.1ot.mobi/login](https://terminal.1ot.mobi/login)
+2. Go to the `App Store` tab [https://terminal.1ot.mobi/addons](https://terminal.1ot.mobi/addons)
+3. Find `API` and toggle the switch to enable it.
+
+To get your API credentials (username and password)
+
+1. Ensure API app is enabled
+2. From the top access the `Apps` tab and click on `API` or directly go to [https://terminal.1ot.mobi/terminal-api](https://terminal.1ot.mobi/terminal-api)
+3. The Username displayed is the value to use for the `username`. Copy it
+4. Click on `Generate new password` to get a new password. Copy it and keep it safe and hidden because it shall not be show again.
+
+To use the diagnostics feature via the API, in addition to enabling the API App above, you also need to enable the Diagnostics App. This attracts and additional cost of 0.03 EUR/active SIM per month.
+
+To enable the Diagnostics app:
+
+1. Login to your terminal [https://terminal.1ot.mobi/login](https://terminal.1ot.mobi/login)
+2. Go to the `App Store` tab [https://terminal.1ot.mobi/addons](https://terminal.1ot.mobi/addons)
+3. Find `Diagnostics` and toggle the switch to enable it.
+
+### Issues
+
+Some APIs are documented as returning `application/json` content types and the model even specified. However, this is not the case when you make a request. For example, setting the name using https://api.1ot.mobi/v1/set_name or `client.SetNameAsync(...)` results in `text/plain` and the body is just `OK`. This does nto change even if you set the `Accept` header to `application/json`.
+
+In such cases, you should not read the `Resource` property in the reponse because the client does not attempt to deserialize the response into an object. Instead, only check if the request has been successful using the `IsSuccessful` property.
+
+I will update the  library once the API is updated to behave as documented.
 
 ### Usage
 
 ```csharp
-var options = new ThingsMobileClientOptions
+var options = new Mobi1otClientOptions
 {
     Username = "your-username-here",
-    Token = "your-token-here"
+    Password = "your-password-here"
 };
-var client = new ThingsMobileClient(options);
-var response = await client.ListSimCardsAsync();
-var simcards = response.Resource;
-foreach (var sim in simcards.Sims)
+var client = new Mobi1otClient(options);
+
+var response = await client.GetAccountSimsAsync();
+var resource = response.Resource;
+Console.WriteLine($"Found {resource.Found} of {resource.Total} from {resource.Offset} offset");
+var simcards = resource.Sims;
+foreach (var sim in simcards)
 {
-    Console.WriteLine($"MSISDN: {sim.Msisdn}");
+    Console.WriteLine($"MSISDN: {sim.MSISDN}");
     Console.WriteLine($"Name: {sim.Name}");
-    Console.WriteLine($"Tag: {sim.Tag}");
-    Console.WriteLine($"Status: {sim.Status}");
+    Console.WriteLine($"IMEI: {sim.IMEI}");
+    Console.WriteLine($"IMSI: {sim.IMSI}");
+    Console.WriteLine($"Status: {sim.Status.GetDescription()}");
     Console.WriteLine("=====================");
 }
 ```
