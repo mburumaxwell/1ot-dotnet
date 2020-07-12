@@ -3,10 +3,14 @@ using System.Collections.Generic;
 
 namespace Mobi1ot.Models
 {
-    ///
+    /// <summary>
+    /// Represents a collection of <see cref="Sim"/> objects
+    /// </summary>
     public class SimCollection : AccountRecordsBase
     {
-        ///
+        /// <summary>
+        /// The <see cref="Sim"/> objects
+        /// </summary>
         [JsonProperty("sims")]
         public List<Sim> Sims { get; set; }
     }

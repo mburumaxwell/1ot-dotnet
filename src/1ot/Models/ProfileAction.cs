@@ -2,15 +2,23 @@
 
 namespace Mobi1ot.Models
 {
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+    /// <summary>
+    /// Represents the action to take on an eSIM profile
+    /// </summary>
     public enum ProfileAction
     {
+        ///
         Enable,
+
+        ///
         Delete,
+
+        ///
         Download,
+
+        ///
         DownloadAndEnable
     }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
     internal static class ProfileActionExtensions
     {

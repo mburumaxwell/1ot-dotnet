@@ -3,18 +3,66 @@ using System;
 
 namespace Mobi1ot.Models
 {
-    ///
-    public class SimStatus
+    /// <summary>
+    /// The primary state of a <see cref="Sim"/>
+    /// </summary>
+    public enum SimPrimaryState
     {
         ///
+        On,
+
+        ///
+        Off,
+
+        ///
+        Deleted,
+
+        ///
+        Pending
+    }
+
+    /// <summary>
+    /// The secondary state of a <see cref="Sim"/>
+    /// </summary>
+    public enum SimSecondaryState
+    {
+        ///
+        Live,
+
+        ///
+        Suspended,
+
+        ///
+        Test,
+
+        ///
+        Off,
+
+        ///
+        Deleted
+    }
+
+    /// <summary>
+    /// The status of a <see cref="Sim"/>
+    /// </summary>
+    public class SimStatus
+    {
+        /// <summary>
+        /// The primary state of a <see cref="Sim"/>
+        /// </summary>
         [JsonProperty("primary")]
         public SimPrimaryState Primary { get; set; }
 
-        ///
+        /// <summary>
+        /// The secondary state of a <see cref="Sim"/>
+        /// </summary>
         [JsonProperty("secondary")]
         public SimSecondaryState? Secondary { get; set; }
 
-        ///
+        /// <summary>
+        /// Gets a representation of the status that is suitable for display/UI purposes.
+        /// </summary>
+        /// <returns></returns>
         public string GetDescription()
         {
             if (Primary == SimPrimaryState.Off) return "SIM is deactivated.";
@@ -36,30 +84,11 @@ namespace Mobi1ot.Models
                     case SimSecondaryState.Live: return "SIM is transitioning to the LIVE state.";
                     case SimSecondaryState.Test: return "SIM is transitioning to the TEST state.";
                     case SimSecondaryState.Suspended: return "SIM is transitioning to the SUSPENDED state.";
-                    case SimSecondaryState.Deleted:return "SIM is transitioning to the DELETED state.";
+                    case SimSecondaryState.Deleted: return "SIM is transitioning to the DELETED state.";
                 }
             }
 
             throw new NotSupportedException($"Primary={Primary} and Secondary={Secondary} is not supported");
         }
     }
-
-#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
-    public enum SimPrimaryState
-    {
-        On,
-        Off,
-        Deleted,
-        Pending
-    }
-
-    public enum SimSecondaryState
-    {
-        Live,
-        Suspended,
-        Test,
-        Off,
-        Deleted
-    }
-#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }
