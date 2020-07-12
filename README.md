@@ -43,6 +43,10 @@ In such cases, you should not read the `Resource` property in the reponse becaus
 
 I will update the  library once the API is updated to behave as documented.
 
+### Naming
+
+The product and company name is 1ot. However, in C# (generally all programming languages), names for types, methods, variables,  and properties can only start with a letter or underscore. .NET further recommends that names of types, methods and properties start with a capital letter. This is why I chose to name the types in reverse domain, i.e. Mobi1ot is gotten from iot.mobi reversed.
+
 ### Usage
 
 ```csharp
