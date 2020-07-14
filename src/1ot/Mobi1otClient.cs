@@ -304,7 +304,7 @@ namespace Mobi1ot
 
         internal async Task<OAuthTokenResponse> RequestTokenAsync(CancellationToken cancellationToken = default)
         {
-            var query = $"?grant_type=password&username={options.Username}&client_id={options.Username}&password={options.Password}";
+            var query = $"?grant_type=password&client_id={options.Username}&username={options.Username}&password={options.Password}";
             var url = new Uri(options.BaseUrl, $"/v1/oauth/token{query}");
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             var response = await httpClient.SendAsync(request, cancellationToken);
