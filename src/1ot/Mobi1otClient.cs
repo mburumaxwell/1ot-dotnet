@@ -250,7 +250,7 @@ namespace Mobi1ot
                 // Only deserialize if the content type matched JSON. There are numerous situations where
                 // the API documentation indicates that the response is application/json but instead
                 // provides text/plain and the body is just "OK".
-                if (string.IsNullOrWhiteSpace(contentType?.MediaType) && KnownJsonContentTypes.Contains(contentType.MediaType))
+                if (!string.IsNullOrWhiteSpace(contentType?.MediaType) && KnownJsonContentTypes.Contains(contentType.MediaType))
                 {
                     using (var streamReader = new StreamReader(stream, encoding))
                     {
