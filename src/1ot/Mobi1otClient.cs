@@ -279,7 +279,7 @@ namespace Mobi1ot
             }
         }
 
-        private async Task AuthenticateAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
+        internal async Task AuthenticateAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
         {
             await tokensLock.WaitAsync(cancellationToken);
             try
@@ -302,7 +302,7 @@ namespace Mobi1ot
             }
         }
 
-        private async Task<OAuthTokenResponse> RequestTokenAsync(CancellationToken cancellationToken = default)
+        internal async Task<OAuthTokenResponse> RequestTokenAsync(CancellationToken cancellationToken = default)
         {
             var query = $"?grant_type=password&username={options.Username}&client_id={options.Username}&password={options.Password}";
             var url = new Uri(options.BaseUrl, $"/v1/oauth/token{query}");
