@@ -11,9 +11,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1ot", "src\1ot\1ot.csproj", "{2FC6D123-3A3D-4890-B6D3-27E18209D660}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8E22A956-96DA-43F6-8001-835E5237B4DB}"
-	ProjectSection(SolutionItems) = preProject
-		test\Directory.Build.props = test\Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{99941D6B-813F-4E25-8B1D-B13BEB789B62}"
 	ProjectSection(SolutionItems) = preProject
