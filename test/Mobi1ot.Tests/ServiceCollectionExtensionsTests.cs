@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace Mobi1ot.Extensions.DependencyInjection.Tests
+namespace Mobi1ot.Tests
 {
     public class ServiceCollectionExtensionsTests
     {

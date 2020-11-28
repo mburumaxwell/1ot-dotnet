@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FD7040B8-9A6
 		src\Directory.Build.props = src\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1ot", "src\1ot\1ot.csproj", "{2FC6D123-3A3D-4890-B6D3-27E18209D660}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1ot", "src\1ot\1ot.csproj", "{2FC6D123-3A3D-4890-B6D3-27E18209D660}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1ot.Extensions.DependencyInjection", "src\1ot.Extensions.DependencyInjection\1ot.Extensions.DependencyInjection.csproj", "{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1ot.Extensions.DependencyInjection", "src\1ot.Extensions.DependencyInjection\1ot.Extensions.DependencyInjection.csproj", "{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8E22A956-96DA-43F6-8001-835E5237B4DB}"
 	ProjectSection(SolutionItems) = preProject
@@ -31,13 +31,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobi1ot.Extensions.DependencyInjection.Tests", "test\Mobi1ot.Extensions.DependencyInjection.Tests\Mobi1ot.Extensions.DependencyInjection.Tests.csproj", "{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobi1ot.Tests", "test\Mobi1ot.Tests\Mobi1ot.Tests.csproj", "{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobi1ot.Tests", "test\Mobi1ot.Tests\Mobi1ot.Tests.csproj", "{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleSimple", "examples\ExampleSimple\ExampleSimple.csproj", "{3490B802-37FB-447C-BFC2-FEC704AC6C76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleSimple", "examples\ExampleSimple\ExampleSimple.csproj", "{3490B802-37FB-447C-BFC2-FEC704AC6C76}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleDependencyInjection", "examples\ExampleDependencyInjection\ExampleDependencyInjection.csproj", "{5B64421D-A574-4AE0-982E-674BD9754EF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleDependencyInjection", "examples\ExampleDependencyInjection\ExampleDependencyInjection.csproj", "{5B64421D-A574-4AE0-982E-674BD9754EF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +51,6 @@ Global
 		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -76,7 +70,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{2FC6D123-3A3D-4890-B6D3-27E18209D660} = {FD7040B8-9A6D-4D6A-A4B4-DC557BC5C138}
 		{29F8C6C3-88B3-40F1-9B13-7CFEC8097013} = {FD7040B8-9A6D-4D6A-A4B4-DC557BC5C138}
-		{A2780B1C-B9E5-412B-8064-21D63BF7D1DD} = {8E22A956-96DA-43F6-8001-835E5237B4DB}
 		{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C} = {8E22A956-96DA-43F6-8001-835E5237B4DB}
 		{3490B802-37FB-447C-BFC2-FEC704AC6C76} = {99941D6B-813F-4E25-8B1D-B13BEB789B62}
 		{5B64421D-A574-4AE0-982E-674BD9754EF9} = {99941D6B-813F-4E25-8B1D-B13BEB789B62}
