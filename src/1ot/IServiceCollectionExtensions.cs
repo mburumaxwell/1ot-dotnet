@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Mobi1ot.Extensions.DependencyInjection;
 using System;
 using System.Net.Http;
 using Mobi1ot;
