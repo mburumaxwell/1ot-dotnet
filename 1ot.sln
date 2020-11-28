@@ -10,15 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8E22A956-96DA-43F6-8001-835E5237B4DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{99941D6B-813F-4E25-8B1D-B13BEB789B62}"
-	ProjectSection(SolutionItems) = preProject
-		examples\Directory.Build.props = examples\Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{77A58123-7173-4C8F-AC60-18016CB9622C}"
 	ProjectSection(SolutionItems) = preProject
 		azure-pipelines.yml = azure-pipelines.yml
-		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
