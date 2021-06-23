@@ -1,5 +1,7 @@
 # 1ot
 
+[![NuGet](https://img.shields.io/nuget/v/1ot.svg)](https://www.nuget.org/packages/1ot/)
+
 ## Introduction
 
 1ot makes it easy to maintain SIM cards and their data plans/usage all over the world. More about 1ot on the [website](https://1ot.mobi).
