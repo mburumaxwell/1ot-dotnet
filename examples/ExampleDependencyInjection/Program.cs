@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Mobi1ot;
-using System;
 
 Console.WriteLine("Hello World!");
 

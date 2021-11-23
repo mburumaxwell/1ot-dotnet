@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Options;
-using System.Net.Http;
 
 namespace Mobi1ot;
 

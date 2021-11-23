@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Mobi1ot;
+﻿namespace Mobi1ot;
 
 /// <summary>
 /// Options for configuring the <see cref="Mobi1otClient"/>

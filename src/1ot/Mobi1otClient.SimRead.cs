@@ -1,10 +1,5 @@
 ﻿using Mobi1ot.Internal;
 using Mobi1ot.Models;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
 
 #nullable disable
 

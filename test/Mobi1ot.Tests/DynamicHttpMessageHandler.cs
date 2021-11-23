@@ -1,9 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace Mobi1ot.Tests;
+﻿namespace Mobi1ot.Tests;
 
 public class DynamicHttpMessageHandler : HttpMessageHandler
 {
