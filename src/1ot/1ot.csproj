@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="Mobi1ot.Tests"/>
+    <InternalsVisibleTo Include="Mobi1ot.Tests" />
   </ItemGroup>
 
   <ItemGroup>
