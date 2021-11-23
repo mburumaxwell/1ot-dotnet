@@ -49,7 +49,7 @@ namespace Mobi1ot.Tests
             Assert.NotNull(response);
             Assert.Equal("1234567890", response.AccessToken);
             Assert.Equal("0987654321", response.RefreshToken);
-            Assert.Equal(60, response.ExpiresIn);
+            Assert.Equal(60, long.Parse(response.ExpiresIn));
         }
 
     }
