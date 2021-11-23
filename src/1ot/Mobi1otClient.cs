@@ -217,19 +217,23 @@ public partial class Mobi1otClient
 
     #region Helpers
 
-    private async Task<Mobi1otResponse<T>> SendAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken = default)
+    private async Task<Mobi1otResponse<T>> SendAsync<T>(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         // ensure request is not null
         if (request == null) throw new ArgumentNullException(nameof(request));
 
         // setup authentication
-        await AuthenticateAsync(request);
+        await AuthenticateAsync(request, cancellationToken);
 
         // execute the request
         var response = await httpClient.SendAsync(request, cancellationToken);
 
         // extract the response
+#if NET5_0_OR_GREATER
+        using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+#else
         using var stream = await response.Content.ReadAsStreamAsync();
+#endif
         var resource = default(T);
         var error = default(Mobi1otError);
 
@@ -263,7 +267,7 @@ public partial class Mobi1otClient
         };
     }
 
-    internal async Task AuthenticateAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
+    internal async Task AuthenticateAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         await tokensLock.WaitAsync(cancellationToken);
         try
@@ -285,16 +289,20 @@ public partial class Mobi1otClient
         }
     }
 
-    internal async Task<OAuthTokenResponse> RequestTokenAsync(CancellationToken cancellationToken = default)
+    internal async Task<OAuthTokenResponse> RequestTokenAsync(CancellationToken cancellationToken)
     {
         var query = $"?grant_type=password&client_id={options.Username}&username={options.Username}&password={options.Password}";
         var url = new Uri(options.BaseUrl, $"/v1/oauth/token{query}");
         var request = new HttpRequestMessage(HttpMethod.Post, url);
         var response = await httpClient.SendAsync(request, cancellationToken);
         response.EnsureSuccessStatusCode();
+#if NET5_0_OR_GREATER
+        var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+#else
         var stream = await response.Content.ReadAsStreamAsync();
+#endif
         return (await JsonSerializer.DeserializeAsync<OAuthTokenResponse>(stream, serializerOptions, cancellationToken))!;
     }
 
-    #endregion
+#endregion
 }

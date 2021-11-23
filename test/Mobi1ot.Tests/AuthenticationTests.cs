@@ -43,7 +43,7 @@ public class AuthenticationTests
             Password = password,
         };
         var client = new Mobi1otClient(options, httpClient);
-        var response = await client.RequestTokenAsync();
+        var response = await client.RequestTokenAsync(default);
         Assert.NotNull(response);
         Assert.Equal("1234567890", response.AccessToken);
         Assert.Equal("0987654321", response.RefreshToken);
