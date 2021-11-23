@@ -13,7 +13,7 @@ public class ServiceCollectionExtensionsTests
         var services = new ServiceCollection().AddMobi1ot(options => { }).Services.BuildServiceProvider();
 
         // Act && Assert
-        Assert.Throws<InvalidOperationException>(() => services.GetRequiredService<Mobi1otClient>());
+        Assert.Throws<OptionsValidationException>(() => services.GetRequiredService<Mobi1otClient>());
     }
 
     [Fact]
