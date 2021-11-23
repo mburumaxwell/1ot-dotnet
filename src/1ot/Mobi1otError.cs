@@ -11,13 +11,13 @@ public class Mobi1otError
     /// The unique code identifying the type of error.
     /// </summary>
     [JsonPropertyName("error_code")]
-    public string ErrorCode { get; set; }
+    public string? ErrorCode { get; set; }
 
     /// <summary>
     /// The description of the error.
     /// </summary>
     [JsonPropertyName("error_description")]
-    public string ErrorDescription { get; set; }
+    public string? ErrorDescription { get; set; }
 
     /// <summary>
     /// The time the error happened

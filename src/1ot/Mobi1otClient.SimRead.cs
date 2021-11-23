@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
+#nullable disable
+
 namespace Mobi1ot;
 
 public partial class Mobi1otClient

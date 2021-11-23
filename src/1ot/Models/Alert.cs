@@ -11,13 +11,13 @@ public class Alert
     /// The unique identifier of the alert
     /// </summary>
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     /// <summary>
     /// The cause of the alert. Also referred to as the trigger.
     /// </summary>
     [JsonPropertyName("trigger")]
-    public string Trigger { get; set; }
+    public string? Trigger { get; set; }
 
     /// <summary>
     /// The time which the alert was triggered
@@ -35,5 +35,5 @@ public class Alert
     /// The unique identifier of the SIM
     /// </summary>
     [JsonPropertyName("iccid")]
-    public string ICCID { get; set; }
+    public string? ICCID { get; set; }
 }

@@ -24,5 +24,5 @@ public class SessionCollection : CollectionBase
     /// The <see cref="Session"/> objects
     /// </summary>
     [JsonPropertyName("sessions")]
-    public List<Session> Sessions { get; set; }
+    public List<Session>? Sessions { get; set; }
 }

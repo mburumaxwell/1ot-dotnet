@@ -20,8 +20,8 @@ public static class IServiceCollectionExtensions
     /// <param name="configureOptions">A delegate that is used to configure a <see cref="Mobi1otClientOptions"/>.</param>
     /// <returns>An <see cref="IHttpClientBuilder" /> that can be used to configure the client.</returns>
     public static IHttpClientBuilder AddMobi1ot(this IServiceCollection services,
-                                                IConfiguration configuration = null,
-                                                Action<Mobi1otClientOptions> configureOptions = null)
+                                                IConfiguration? configuration = null,
+                                                Action<Mobi1otClientOptions>? configureOptions = null)
     {
         // if we have a configuration, add it
         if (configuration != null)
@@ -67,8 +67,7 @@ public static class IServiceCollectionExtensions
     /// <param name="services">The <see cref="IServiceCollection"/> in which to register the services.</param>
     /// <param name="configureOptions">A delegate that is used to configure a <see cref="Mobi1otClientOptions"/>.</param>
     /// <returns>An <see cref="IHttpClientBuilder" /> that can be used to configure the client.</returns>
-    public static IHttpClientBuilder AddMobi1ot(this IServiceCollection services,
-                                                           Action<Mobi1otClientOptions> configureOptions)
+    public static IHttpClientBuilder AddMobi1ot(this IServiceCollection services, Action<Mobi1otClientOptions> configureOptions)
     {
         return services.AddMobi1ot(null, configureOptions);
     }

@@ -11,25 +11,25 @@ public class Session
     /// The unique identifier of the session
     /// </summary>
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string? Id { get; set; }
 
     /// <summary>
     /// The name of the country where the session happened
     /// </summary>
     [JsonPropertyName("country")]
-    public string Country { get; set; }
+    public string? Country { get; set; }
 
     /// <summary>
     /// The 3-letter code of the country where the session happened
     /// </summary>
     [JsonPropertyName("alpha3")]
-    public string Alpha3 { get; set; }
+    public string? Alpha3 { get; set; }
 
     /// <summary>
     /// The operator who provided the session.
     /// </summary>
     [JsonPropertyName("operator")]
-    public string Operator { get; set; }
+    public string? Operator { get; set; }
 
     /// <summary>
     /// The size of data transmitted during the session in bytes
@@ -48,7 +48,7 @@ public class Session
     /// The currency used for <see cref="DataCost"/>
     /// </summary>
     [JsonPropertyName("currency")]
-    public string Currency { get; set; }
+    public string? Currency { get; set; }
 
     /// <summary>
     /// The starting time for the session

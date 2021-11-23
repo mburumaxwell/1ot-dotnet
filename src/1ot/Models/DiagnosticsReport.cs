@@ -11,15 +11,15 @@ public class DiagnosticsReport
     /// The IMEI of the equipment/device that the SIM is connected to
     /// </summary>
     [JsonPropertyName("imei")]
-    public string IMEI { get; set; }
+    public string? IMEI { get; set; }
 
     ///
     [JsonPropertyName("deviceName")]
-    public string DeviceName { get; set; }
+    public string? DeviceName { get; set; }
 
     ///
     [JsonPropertyName("inDataSession")]
-    public object InDataSession { get; set; }
+    public object? InDataSession { get; set; }
 
     /// <summary>
     /// The last time, the device was connected to the network.
@@ -31,13 +31,13 @@ public class DiagnosticsReport
     /// The country in which the SIM was last connected.
     /// </summary>
     [JsonPropertyName("lastCountry")]
-    public string LastCountry { get; set; }
+    public string? LastCountry { get; set; }
 
     /// <summary>
     /// The operator through which the SIM was last connected.
     /// </summary>
     [JsonPropertyName("lastOperator")]
-    public string LastOperator { get; set; }
+    public string? LastOperator { get; set; }
 
     /// <summary>
     /// The inteprated latitude at which the SIM was last connected.

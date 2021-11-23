@@ -11,5 +11,5 @@ public class MessageSendResult
     /// The response of the 1ot terminal
     /// </summary>
     [JsonPropertyName("message")]
-    public string Message { get; set; }
+    public string? Message { get; set; }
 }

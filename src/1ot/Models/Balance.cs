@@ -24,7 +24,7 @@ public class Balance
     /// The currency used for <see cref="DataCost"/>
     /// </summary>
     [JsonPropertyName("currency")]
-    public string Currency { get; set; }
+    public string? Currency { get; set; }
 
     /// <summary>
     /// The month in which this balance exists.

@@ -24,7 +24,7 @@ public partial class Mobi1otClient
     private readonly Mobi1otClientOptions options;
     private readonly HttpClient httpClient;
     private readonly SemaphoreSlim tokensLock = new SemaphoreSlim(1, 1);
-    private OAuthTokenResponse tokens = null;
+    private OAuthTokenResponse? tokens = null;
     private DateTimeOffset? tokensExpiry = null;
 
 
@@ -33,7 +33,7 @@ public partial class Mobi1otClient
     /// </summary>
     /// <param name="httpClient"></param>
     /// <param name="options">The options for configuring the client</param>
-    public Mobi1otClient(Mobi1otClientOptions options, HttpClient httpClient = null)
+    public Mobi1otClient(Mobi1otClientOptions options, HttpClient? httpClient = null)
     {
         this.httpClient = httpClient ?? new HttpClient();
         this.options = options ?? throw new ArgumentNullException(nameof(options));
@@ -54,7 +54,7 @@ public partial class Mobi1otClient
         }
 
         // populate the User-Agent header
-        var productVersion = typeof(Mobi1otClient).Assembly.GetName().Version.ToString();
+        var productVersion = typeof(Mobi1otClient).Assembly.GetName().Version!.ToString();
         var userAgent = new ProductInfoHeaderValue("1ot-dotnet", productVersion);
         this.httpClient.DefaultRequestHeaders.UserAgent.Add(userAgent);
     }
@@ -249,7 +249,7 @@ public partial class Mobi1otClient
             // Only deserialize if the content type matched JSON. There are numerous situations where
             // the API documentation indicates that the response is application/json but instead
             // provides text/plain and the body is just "OK".
-            if (!string.IsNullOrWhiteSpace(contentType?.MediaType) && KnownJsonContentTypes.Contains(contentType.MediaType))
+            if (!string.IsNullOrWhiteSpace(contentType?.MediaType) && KnownJsonContentTypes.Contains(contentType?.MediaType))
             {
                 if (response.IsSuccessStatusCode)
                 {
@@ -280,9 +280,8 @@ public partial class Mobi1otClient
             if (tokens == null || string.IsNullOrWhiteSpace(tokens.AccessToken) || tokensExpiry < DateTimeOffset.UtcNow)
             {
                 tokens = await RequestTokenAsync(cancellationToken);
-                tokensExpiry = DateTimeOffset.UtcNow.AddSeconds(long.Parse(tokens.ExpiresIn));
                 // bring the expiry time 5 seconds earlier to allow time for renewal
-                tokensExpiry -= TimeSpan.FromSeconds(5);
+                tokensExpiry = DateTimeOffset.UtcNow.AddSeconds(long.Parse(tokens.ExpiresIn!)) - TimeSpan.FromSeconds(5);
             }
 
             // at this point, we should have a valid token, so set the header
@@ -302,7 +301,7 @@ public partial class Mobi1otClient
         var response = await httpClient.SendAsync(request, cancellationToken);
         response.EnsureSuccessStatusCode();
         var stream = await response.Content.ReadAsStreamAsync();
-        return await JsonSerializer.DeserializeAsync<OAuthTokenResponse>(stream, serializerOptions, cancellationToken);
+        return (await JsonSerializer.DeserializeAsync<OAuthTokenResponse>(stream, serializerOptions, cancellationToken))!;
     }
 
     #endregion

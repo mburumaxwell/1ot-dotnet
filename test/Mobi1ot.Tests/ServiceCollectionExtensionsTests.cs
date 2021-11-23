@@ -52,7 +52,7 @@ public class ServiceCollectionExtensionsTests
         // Assert
         var serviceDescriptor = collection.FirstOrDefault(x => x.ServiceType == typeof(Mobi1otClient));
         Assert.NotNull(serviceDescriptor);
-        Assert.Equal(ServiceLifetime.Transient, serviceDescriptor.Lifetime);
+        Assert.Equal(ServiceLifetime.Transient, serviceDescriptor!.Lifetime);
     }
 
     [Fact]

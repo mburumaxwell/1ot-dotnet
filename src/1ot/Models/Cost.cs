@@ -9,13 +9,13 @@ public class Cost
 {
     ///
     [JsonPropertyName("iccid")]
-    public string ICCID { get; set; }
+    public string? ICCID { get; set; }
 
     /// <summary>
     /// The plan on which this cost was charged
     /// </summary>
     [JsonPropertyName("data_plan")]
-    public string DataPlan { get; set; }
+    public string? DataPlan { get; set; }
 
     /// <summary>
     /// The amount of data used in bytes
@@ -34,7 +34,7 @@ public class Cost
     /// The currency used for <see cref="DataCost"/>
     /// </summary>
     [JsonPropertyName("currency")]
-    public string Currency { get; set; }
+    public string? Currency { get; set; }
 
     /// <summary>
     /// The month in which this cost was billed.

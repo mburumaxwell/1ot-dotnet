@@ -11,12 +11,12 @@ public class Mobi1otResponse<T>
     /// <summary>
     /// The resource extracted from the response body
     /// </summary>
-    public T Resource { get; set; }
+    public T? Resource { get; set; }
 
     /// <summary>
     /// The error extracted from the response body
     /// </summary>
-    public Mobi1otError Error { get; set; }
+    public Mobi1otError? Error { get; set; }
 
     /// <summary>
     /// Status code response from the API

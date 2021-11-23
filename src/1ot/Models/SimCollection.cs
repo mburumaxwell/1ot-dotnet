@@ -12,5 +12,5 @@ public class SimCollection : CollectionBase
     /// The <see cref="Sim"/> objects
     /// </summary>
     [JsonPropertyName("sims")]
-    public List<Sim> Sims { get; set; }
+    public List<Sim>? Sims { get; set; }
 }

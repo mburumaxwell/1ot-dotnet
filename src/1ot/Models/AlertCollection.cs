@@ -12,5 +12,5 @@ public class AlertCollection : CollectionBase
     /// The <see cref="Alert"/> objects
     /// </summary>
     [JsonPropertyName("alerts")]
-    public List<Alert> Sims { get; set; }
+    public List<Alert>? Sims { get; set; }
 }
