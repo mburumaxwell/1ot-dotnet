@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 using Mobi1ot;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -14,19 +13,10 @@ public static class IServiceCollectionExtensions
     /// related services to the <see cref="IServiceCollection"/>.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> in which to register the services.</param>
-    /// <param name="configuration">A configuration object with values for a <see cref="Mobi1otClientOptions"/>.</param>
     /// <param name="configureOptions">A delegate that is used to configure a <see cref="Mobi1otClientOptions"/>.</param>
     /// <returns>An <see cref="IHttpClientBuilder" /> that can be used to configure the client.</returns>
-    public static IHttpClientBuilder AddMobi1ot(this IServiceCollection services,
-                                                IConfiguration? configuration = null,
-                                                Action<Mobi1otClientOptions>? configureOptions = null)
+    public static IHttpClientBuilder AddMobi1ot(this IServiceCollection services, Action<Mobi1otClientOptions>? configureOptions = null)
     {
-        // if we have a configuration, add it
-        if (configuration != null)
-        {
-            services.Configure<Mobi1otClientOptions>(configuration);
-        }
-
         // if we have a configuration action, add it
         if (configureOptions != null)
         {
@@ -55,30 +45,6 @@ public static class IServiceCollectionExtensions
         services.TryAddTransient<Mobi1otClient>(resolver => resolver.GetRequiredService<InjectableMobi1otClient>());
 
         return services.AddHttpClient<InjectableMobi1otClient>();
-    }
-
-    /// <summary>
-    /// Adds the <see cref="IHttpClientFactory"/> with <see cref="Mobi1otClient"/> and
-    /// related services to the <see cref="IServiceCollection"/>.
-    /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection"/> in which to register the services.</param>
-    /// <param name="configureOptions">A delegate that is used to configure a <see cref="Mobi1otClientOptions"/>.</param>
-    /// <returns>An <see cref="IHttpClientBuilder" /> that can be used to configure the client.</returns>
-    public static IHttpClientBuilder AddMobi1ot(this IServiceCollection services, Action<Mobi1otClientOptions> configureOptions)
-    {
-        return services.AddMobi1ot(null, configureOptions);
-    }
-
-    /// <summary>
-    /// Adds the <see cref="IHttpClientFactory"/> with <see cref="Mobi1otClient"/> and
-    /// related services to the <see cref="IServiceCollection"/>.
-    /// </summary>
-    /// <param name="services">The <see cref="IServiceCollection"/> in which to register the services.</param>
-    /// <param name="configuration">A configuration object with values for a <see cref="Mobi1otClientOptions"/>.</param>
-    /// <returns>An <see cref="IHttpClientBuilder" /> that can be used to configure the client.</returns>
-    public static IHttpClientBuilder AddMobi1ot(this IServiceCollection services, IConfiguration configuration)
-    {
-        return services.AddMobi1ot(configuration, null);
     }
 
     /// <summary>
