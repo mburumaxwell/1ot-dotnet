@@ -19,7 +19,7 @@ namespace Mobi1ot
     {
         private static readonly string[] KnownJsonContentTypes = new[] { "application/json", "text/json" };
 
-        private readonly JsonSerializerOptions serializerOptions = new JsonSerializerOptions();
+        private readonly JsonSerializerOptions serializerOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 
         private readonly Mobi1otClientOptions options;
         private readonly HttpClient httpClient;
