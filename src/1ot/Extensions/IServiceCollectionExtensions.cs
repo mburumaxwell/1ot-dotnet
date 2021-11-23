@@ -42,9 +42,7 @@ public static class IServiceCollectionExtensions
                  }
              });
 
-        services.TryAddTransient<Mobi1otClient>(resolver => resolver.GetRequiredService<InjectableMobi1otClient>());
-
-        return services.AddHttpClient<InjectableMobi1otClient>();
+        return services.AddHttpClient<Mobi1otClient>();
     }
 
     /// <summary>

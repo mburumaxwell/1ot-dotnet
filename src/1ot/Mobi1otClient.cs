@@ -1,4 +1,5 @@
-﻿using Mobi1ot.Internal;
+﻿using Microsoft.Extensions.Options;
+using Mobi1ot.Internal;
 using Mobi1ot.Models;
 using System.Net.Http.Headers;
 using System.Text;
@@ -21,16 +22,13 @@ public partial class Mobi1otClient
     private OAuthTokenResponse? tokens = null;
     private DateTimeOffset? tokensExpiry = null;
 
-
-    /// <summary>
-    /// Creates an instance if <see cref="Mobi1otClient"/>
-    /// </summary>
+    /// <summary>Creates an instance if <see cref="Mobi1otClient"/>.</summary>
     /// <param name="httpClient"></param>
-    /// <param name="options">The options for configuring the client</param>
-    public Mobi1otClient(Mobi1otClientOptions options, HttpClient? httpClient = null)
+    /// <param name="optionsAccessor"></param>
+    public Mobi1otClient(HttpClient httpClient, IOptions<Mobi1otClientOptions> optionsAccessor)
     {
         this.httpClient = httpClient ?? new HttpClient();
-        this.options = options ?? throw new ArgumentNullException(nameof(options));
+        options = optionsAccessor?.Value ?? throw new ArgumentNullException(nameof(optionsAccessor));
 
         if (string.IsNullOrWhiteSpace(options.Username))
         {
@@ -304,5 +302,5 @@ public partial class Mobi1otClient
         return (await JsonSerializer.DeserializeAsync<OAuthTokenResponse>(stream, serializerOptions, cancellationToken))!;
     }
 
-#endregion
+    #endregion
 }
