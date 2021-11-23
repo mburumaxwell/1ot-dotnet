@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Microsoft.Extensions.Options;
 using Mobi1ot;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -6,7 +6,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 /// <summary>
 /// Extension methods for <see cref="IServiceCollection"/>
 /// </summary>
-public static class IServiceCollectionExtensions
+public static partial class IServiceCollectionExtensions
 {
     /// <summary>
     /// Adds the <see cref="IHttpClientFactory"/> with <see cref="Mobi1otClient"/> and
@@ -17,34 +17,13 @@ public static class IServiceCollectionExtensions
     /// <returns>An <see cref="IHttpClientBuilder" /> that can be used to configure the client.</returns>
     public static IHttpClientBuilder AddMobi1ot(this IServiceCollection services, Action<Mobi1otClientOptions>? configureOptions = null)
     {
-        // if we have a configuration action, add it
         if (configureOptions != null)
         {
             services.Configure(configureOptions);
         }
 
-        services
-             .PostConfigure<Mobi1otClientOptions>(options => // TODO: migrate to an implementation of IValidateOptions<T>
-             {
-                 if (string.IsNullOrWhiteSpace(options.Username))
-                 {
-                     throw new InvalidOperationException($"'{nameof(options.Username)}' must be specified.");
-                 }
-
-                 if (string.IsNullOrWhiteSpace(options.Password))
-                 {
-                     throw new InvalidOperationException($"'{nameof(options.Password)}' must be specified.");
-                 }
-
-                 if (options.BaseUrl == null)
-                 {
-                     throw new InvalidOperationException($"'{nameof(options.BaseUrl)}' must be specified.");
-                 }
-             });
-
-        services.TryAddTransient<Mobi1otClient>(resolver => resolver.GetRequiredService<InjectableMobi1otClient>());
-
-        return services.AddHttpClient<InjectableMobi1otClient>();
+        services.AddSingleton<IValidateOptions<Mobi1otClientOptions>, Mobi1otClientValidateOptions>();
+        return services.AddHttpClient<Mobi1otClient>();
     }
 
     /// <summary>

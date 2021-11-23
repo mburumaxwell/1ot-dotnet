@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Text;
 using Xunit;
@@ -35,14 +36,15 @@ public class AuthenticationTests
                 Content = new StringContent(Json200Response, Encoding.UTF8, "application/json")
             };
         });
-        var httpClient = new HttpClient(handler);
 
-        var options = new Mobi1otClientOptions
-        {
-            Username = username,
-            Password = password,
-        };
-        var client = new Mobi1otClient(options, httpClient);
+        // Arrange
+        var services = new ServiceCollection()
+            .AddMobi1ot(username, password)
+            .ConfigurePrimaryHttpMessageHandler(() => handler)
+            .Services.BuildServiceProvider();
+
+        // Act
+        var client = services.GetRequiredService<Mobi1otClient>();
         var response = await client.RequestTokenAsync(default);
         Assert.NotNull(response);
         Assert.Equal("1234567890", response.AccessToken);
