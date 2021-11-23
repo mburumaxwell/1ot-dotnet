@@ -14,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{99
 		examples\Directory.Build.props = examples\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mobi1ot.Tests", "test\Mobi1ot.Tests\Mobi1ot.Tests.csproj", "{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1ot.Tests", "test\1ot.Tests\1ot.Tests.csproj", "{9D6DF6A9-1D67-44A6-BBE8-59BB75CDE17C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExampleDependencyInjection", "examples\ExampleDependencyInjection\ExampleDependencyInjection.csproj", "{5B64421D-A574-4AE0-982E-674BD9754EF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ListSimCards", "examples\ListSimCards\ListSimCards.csproj", "{5B64421D-A574-4AE0-982E-674BD9754EF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
