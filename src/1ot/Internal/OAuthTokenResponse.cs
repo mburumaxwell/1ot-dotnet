@@ -11,17 +11,17 @@ internal class OAuthTokenResponse
     /// The access token
     /// </summary>
     [JsonPropertyName("access_token")]
-    public virtual string? AccessToken { get; set; }
+    public virtual string? AccessToken { get; init; }
 
     /// <summary>
     /// The refresh token
     /// </summary>
     [JsonPropertyName("refresh_token")]
-    public virtual string? RefreshToken { get; set; }
+    public virtual string? RefreshToken { get; init; }
 
     /// <summary>
     /// The duration of the token from now in seconds
     /// </summary>
     [JsonPropertyName("expires_in")]
-    public virtual string? ExpiresIn { get; set; }
+    public virtual string? ExpiresIn { get; init; }
 }

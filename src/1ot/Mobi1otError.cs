@@ -11,17 +11,17 @@ public class Mobi1otError
     /// The unique code identifying the type of error.
     /// </summary>
     [JsonPropertyName("error_code")]
-    public string? ErrorCode { get; set; }
+    public string? ErrorCode { get; init; }
 
     /// <summary>
     /// The description of the error.
     /// </summary>
     [JsonPropertyName("error_description")]
-    public string? ErrorDescription { get; set; }
+    public string? ErrorDescription { get; init; }
 
     /// <summary>
     /// The time the error happened
     /// </summary>
     [JsonPropertyName("timestamp")]
-    public long Timestamp { get; set; } // TODO: use custom JsonConverter for seconds to DateTimeOffset
+    public long Timestamp { get; init; } // TODO: use custom JsonConverter for seconds to DateTimeOffset
 }
