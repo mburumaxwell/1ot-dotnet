@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Mobi1ot.Models
 {
@@ -11,19 +11,19 @@ namespace Mobi1ot.Models
         /// <summary>
         /// The starting time for the sessions
         /// </summary>
-        [JsonProperty("from")]
+        [JsonPropertyName("from")]
         public long From { get; set; } // TODO: use custom JsonConverter for seconds to DateTimeOffset
 
         /// <summary>
         /// The ending time for the sessions
         /// </summary>
-        [JsonProperty("to")]
+        [JsonPropertyName("to")]
         public long To { get; set; } // TODO: use custom JsonConverter for seconds to DateTimeOffset
 
         /// <summary>
         /// The <see cref="Session"/> objects
         /// </summary>
-        [JsonProperty("sessions")]
+        [JsonPropertyName("sessions")]
         public List<Session> Sessions { get; set; }
     }
 }

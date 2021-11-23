@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Mobi1ot.Models
 {
@@ -11,7 +11,7 @@ namespace Mobi1ot.Models
         /// <summary>
         /// The <see cref="Alert"/> objects
         /// </summary>
-        [JsonProperty("alerts")]
+        [JsonPropertyName("alerts")]
         public List<Alert> Sims { get; set; }
     }
 }
