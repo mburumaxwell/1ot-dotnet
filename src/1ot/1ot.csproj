@@ -6,7 +6,7 @@
       See https://1ot.mobi for more about 1ot
     </Description>
     <RootNamespace>Mobi1ot</RootNamespace>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net5.0;net6.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Deterministic>true</Deterministic>
     <!--<IsPackable>true</IsPackable>-->
