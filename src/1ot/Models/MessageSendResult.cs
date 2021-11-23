@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Mobi1ot.Models
 {
@@ -10,7 +10,7 @@ namespace Mobi1ot.Models
         /// <summary>
         /// The response of the 1ot terminal
         /// </summary>
-        [JsonProperty("message")]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
     }
 }

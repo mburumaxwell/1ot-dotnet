@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
+using System.Text.Json.Serialization;
 
 namespace Mobi1ot.Models
 {
@@ -50,13 +50,13 @@ namespace Mobi1ot.Models
         /// <summary>
         /// The primary state of a <see cref="Sim"/>
         /// </summary>
-        [JsonProperty("primary")]
+        [JsonPropertyName("primary")]
         public SimPrimaryState Primary { get; set; }
 
         /// <summary>
         /// The secondary state of a <see cref="Sim"/>
         /// </summary>
-        [JsonProperty("secondary")]
+        [JsonPropertyName("secondary")]
         public SimSecondaryState? Secondary { get; set; }
 
         /// <summary>

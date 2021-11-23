@@ -1,13 +1,12 @@
 ﻿using Mobi1ot.Internal;
 using Mobi1ot.Models;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -20,7 +19,7 @@ namespace Mobi1ot
     {
         private static readonly string[] KnownJsonContentTypes = new[] { "application/json", "text/json" };
 
-        private readonly JsonSerializerSettings serializerSettings = new JsonSerializerSettings();
+        private readonly JsonSerializerOptions serializerOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 
         private readonly Mobi1otClientOptions options;
         private readonly HttpClient httpClient;
@@ -252,20 +251,13 @@ namespace Mobi1ot
                 // provides text/plain and the body is just "OK".
                 if (!string.IsNullOrWhiteSpace(contentType?.MediaType) && KnownJsonContentTypes.Contains(contentType.MediaType))
                 {
-                    using (var streamReader = new StreamReader(stream, encoding))
+                    if (response.IsSuccessStatusCode)
                     {
-                        using (var jsonReader = new JsonTextReader(streamReader))
-                        {
-                            var serializer = JsonSerializer.Create(serializerSettings);
-                            if (response.IsSuccessStatusCode)
-                            {
-                                resource = serializer.Deserialize<T>(jsonReader);
-                            }
-                            else
-                            {
-                                error = serializer.Deserialize<Mobi1otError>(jsonReader);
-                            }
-                        }
+                        resource = await JsonSerializer.DeserializeAsync<T>(stream, serializerOptions, cancellationToken);
+                    }
+                    else
+                    {
+                        error = await JsonSerializer.DeserializeAsync<Mobi1otError>(stream, serializerOptions, cancellationToken);
                     }
                 }
 
@@ -288,7 +280,7 @@ namespace Mobi1ot
                 if (tokens == null || string.IsNullOrWhiteSpace(tokens.AccessToken) || tokensExpiry < DateTimeOffset.UtcNow)
                 {
                     tokens = await RequestTokenAsync(cancellationToken);
-                    tokensExpiry = DateTimeOffset.UtcNow.AddSeconds(tokens.ExpiresIn);
+                    tokensExpiry = DateTimeOffset.UtcNow.AddSeconds(long.Parse(tokens.ExpiresIn));
                     // bring the expiry time 5 seconds earlier to allow time for renewal
                     tokensExpiry -= TimeSpan.FromSeconds(5);
                 }
@@ -309,8 +301,8 @@ namespace Mobi1ot
             var request = new HttpRequestMessage(HttpMethod.Post, url);
             var response = await httpClient.SendAsync(request, cancellationToken);
             response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<OAuthTokenResponse>(json);
+            var stream = await response.Content.ReadAsStreamAsync();
+            return await JsonSerializer.DeserializeAsync<OAuthTokenResponse>(stream, serializerOptions, cancellationToken);
         }
 
         #endregion

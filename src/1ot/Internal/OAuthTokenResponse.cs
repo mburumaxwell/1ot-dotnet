@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Mobi1ot.Internal
 {
@@ -10,19 +10,19 @@ namespace Mobi1ot.Internal
         /// <summary>
         /// The access token
         /// </summary>
-        [JsonProperty("access_token")]
+        [JsonPropertyName("access_token")]
         public virtual string AccessToken { get; set; }
 
         /// <summary>
         /// The refresh token
         /// </summary>
-        [JsonProperty("refresh_token")]
+        [JsonPropertyName("refresh_token")]
         public virtual string RefreshToken { get; set; }
 
         /// <summary>
         /// The duration of the token from now in seconds
         /// </summary>
-        [JsonProperty("expires_in")]
-        public virtual long ExpiresIn { get; set; }
+        [JsonPropertyName("expires_in")]
+        public virtual string ExpiresIn { get; set; }
     }
 }

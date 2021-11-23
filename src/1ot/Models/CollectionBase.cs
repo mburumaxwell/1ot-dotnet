@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace Mobi1ot.Models
 {
@@ -10,19 +10,19 @@ namespace Mobi1ot.Models
         /// <summary>
         /// The number of records found
         /// </summary>
-        [JsonProperty("found")]
+        [JsonPropertyName("found")]
         public int Found { get; set; }
 
         /// <summary>
         /// The offset from which the records begin
         /// </summary>
-        [JsonProperty("offset")]
+        [JsonPropertyName("offset")]
         public int Offset { get; set; }
 
         /// <summary>
         /// The total number of records on the server database
         /// </summary>
-        [JsonProperty("total")]
+        [JsonPropertyName("total")]
         public int Total { get; set; }
     }
 }
