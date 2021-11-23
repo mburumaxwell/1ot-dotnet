@@ -229,40 +229,38 @@ public partial class Mobi1otClient
         var response = await httpClient.SendAsync(request, cancellationToken);
 
         // extract the response
-        using (var stream = await response.Content.ReadAsStreamAsync())
+        using var stream = await response.Content.ReadAsStreamAsync();
+        var resource = default(T);
+        var error = default(Mobi1otError);
+
+        // get the content type
+        var contentType = response.Content.Headers?.ContentType;
+
+        // get the encoding and always default to UTF-8
+        var encoding = Encoding.GetEncoding(contentType?.CharSet ?? Encoding.UTF8.BodyName);
+
+        // Only deserialize if the content type matched JSON. There are numerous situations where
+        // the API documentation indicates that the response is application/json but instead
+        // provides text/plain and the body is just "OK".
+        if (!string.IsNullOrWhiteSpace(contentType?.MediaType) && KnownJsonContentTypes.Contains(contentType?.MediaType))
         {
-            var resource = default(T);
-            var error = default(Mobi1otError);
-
-            // get the content type
-            var contentType = response.Content.Headers?.ContentType;
-
-            // get the encoding and always default to UTF-8
-            var encoding = Encoding.GetEncoding(contentType?.CharSet ?? Encoding.UTF8.BodyName);
-
-            // Only deserialize if the content type matched JSON. There are numerous situations where
-            // the API documentation indicates that the response is application/json but instead
-            // provides text/plain and the body is just "OK".
-            if (!string.IsNullOrWhiteSpace(contentType?.MediaType) && KnownJsonContentTypes.Contains(contentType?.MediaType))
+            if (response.IsSuccessStatusCode)
             {
-                if (response.IsSuccessStatusCode)
-                {
-                    resource = await JsonSerializer.DeserializeAsync<T>(stream, serializerOptions, cancellationToken);
-                }
-                else
-                {
-                    error = await JsonSerializer.DeserializeAsync<Mobi1otError>(stream, serializerOptions, cancellationToken);
-                }
+                resource = await JsonSerializer.DeserializeAsync<T>(stream, serializerOptions, cancellationToken);
             }
-
-            return new Mobi1otResponse<T>
+            else
             {
-                StatusCode = response.StatusCode,
-                IsSuccessful = response.IsSuccessStatusCode,
-                Error = error,
-                Resource = resource,
-            };
+                error = await JsonSerializer.DeserializeAsync<Mobi1otError>(stream, serializerOptions, cancellationToken);
+            }
         }
+
+        return new Mobi1otResponse<T>
+        {
+            StatusCode = response.StatusCode,
+            IsSuccessful = response.IsSuccessStatusCode,
+            Error = error,
+            Resource = resource,
+        };
     }
 
     internal async Task AuthenticateAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
