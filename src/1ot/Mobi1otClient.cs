@@ -34,17 +34,17 @@ public partial class Mobi1otClient
 
         if (string.IsNullOrWhiteSpace(options.Username))
         {
-            throw new ArgumentNullException(nameof(options.Username));
+            throw new InvalidOperationException($"'{nameof(options.Username)}' must be specified.");
         }
 
         if (string.IsNullOrWhiteSpace(options.Password))
         {
-            throw new ArgumentNullException(nameof(options.Password));
+            throw new InvalidOperationException($"'{nameof(options.Password)}' must be specified.");
         }
 
         if (options.BaseUrl == null)
         {
-            throw new ArgumentNullException(nameof(options.BaseUrl));
+            throw new InvalidOperationException($"'{nameof(options.BaseUrl)}' must be specified.");
         }
 
         // populate the User-Agent header

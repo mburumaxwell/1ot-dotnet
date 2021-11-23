@@ -34,23 +34,22 @@ public static class IServiceCollectionExtensions
         }
 
         services
-             .PostConfigure<Mobi1otClientOptions>(o =>
+             .PostConfigure<Mobi1otClientOptions>(options => // TODO: migrate to an implementation of IValidateOptions<T>
              {
-                 if (string.IsNullOrWhiteSpace(o.Username))
+                 if (string.IsNullOrWhiteSpace(options.Username))
                  {
-                     throw new ArgumentNullException(nameof(o.Username));
+                     throw new InvalidOperationException($"'{nameof(options.Username)}' must be specified.");
                  }
 
-                 if (string.IsNullOrWhiteSpace(o.Password))
+                 if (string.IsNullOrWhiteSpace(options.Password))
                  {
-                     throw new ArgumentNullException(nameof(o.Password));
+                     throw new InvalidOperationException($"'{nameof(options.Password)}' must be specified.");
                  }
 
-                 if (o.BaseUrl == null)
+                 if (options.BaseUrl == null)
                  {
-                     throw new ArgumentNullException(nameof(o.BaseUrl));
+                     throw new InvalidOperationException($"'{nameof(options.BaseUrl)}' must be specified.");
                  }
-
              });
 
         services.TryAddTransient<Mobi1otClient>(resolver => resolver.GetRequiredService<InjectableMobi1otClient>());
