@@ -13,11 +13,11 @@ public partial class Mobi1otClient
 {
     private static readonly string[] KnownJsonContentTypes = new[] { "application/json", "text/json" };
 
-    private readonly JsonSerializerOptions serializerOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
+    private readonly JsonSerializerOptions serializerOptions = new(JsonSerializerDefaults.Web);
 
     private readonly Mobi1otClientOptions options;
     private readonly HttpClient httpClient;
-    private readonly SemaphoreSlim tokensLock = new SemaphoreSlim(1, 1);
+    private readonly SemaphoreSlim tokensLock = new(1, 1);
     private OAuthTokenResponse? tokens = null;
     private DateTimeOffset? tokensExpiry = null;
 
