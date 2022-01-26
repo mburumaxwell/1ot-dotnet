@@ -6,6 +6,10 @@ updates:
     interval: daily
     time: "02:00"
   open-pull-requests-limit: 10
+  ignore:
+    # For System packages, ignore all patch updates
+    - dependency-name: "System.*"
+      update-types: ["version-update:semver-patch"]
 - package-ecosystem: github-actions
   directory: "/"
   schedule:
