@@ -1,3 +1,6 @@
+> [!Warning]
+> NO LONGER MAINTAINED BECAUSE I NOT LONGER USE 1ot
+
 # 1ot
 
 [![NuGet](https://img.shields.io/nuget/v/1ot.svg)](https://www.nuget.org/packages/1ot/)
